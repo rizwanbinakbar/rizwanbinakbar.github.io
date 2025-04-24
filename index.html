@@ -23,6 +23,23 @@
             padding: 20px;
             text-align: center;
         }
+        nav {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background: #444;
+            border-radius: 3px;
+        }
         section {
             margin: 20px 0;
             background: white;
@@ -44,25 +61,29 @@
         <p>Welcome to my personal space on the web!</p>
     </header>
     
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="professional.html">Professional</a>
+        <a href="hobbies.html">Hobbies</a>
+    </nav>
+    
     <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I'm Rizwan. This is my personal website where I share information about my professional background, education, hobbies, and interests.</p>
+        <section id="welcome">
+            <h2>Welcome!</h2>
+            <p>Hello and welcome to my personal website. I'm Rizwan, and I've created this space to share information about myself, my professional background, and my personal interests.</p>
+            <p>Feel free to explore the different sections using the navigation menu above!</p>
         </section>
         
-        <section id="education">
-            <h2>Education</h2>
-            <p>Information about what I study will go here.</p>
-        </section>
-        
-        <section id="hobbies">
-            <h2>Hobbies & Interests</h2>
-            <p>My personal interests and activities will be listed here.</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>You can reach me at: [Your contact information]</p>
+        <section id="highlights">
+            <h2>Highlights</h2>
+            <p>Here are some quick highlights about me:</p>
+            <ul>
+                <li>Education: [Your education summary]</li>
+                <li>Professional: [Brief professional background]</li>
+                <li>Hobbies: [List a few key hobbies]</li>
+            </ul>
+            <p>Visit the specific pages to learn more about each aspect of my life!</p>
         </section>
     </div>
     
