@@ -44,9 +44,10 @@ body {
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(to right, #fff5e1, #ffe7d1);
+  background: linear-gradient(to right, #fff8e1, #ffe0b2); /* Lighter yellowish gradient */
   color: #333;
 }
+
 
 .hero h1 {
   font-size: 2.8rem;
