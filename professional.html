@@ -1,120 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional - Rizwan's Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 30px;
-        }
-        header {
-            background: #35424a;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            display: inline-block;
-        }
-        nav a:hover {
-            background: #444;
-            border-radius: 3px;
-        }
-        section {
-            margin: 20px 0;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .skill-bar {
-            background-color: #ddd;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .skill {
-            background-color: #4CAF50;
-            color: white;
-            padding: 3px 10px;
-            text-align: right;
-            border-radius: 10px;
-        }
-        footer {
-            background: #35424a;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional | Rizwan Khan</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Professional Background</h1>
-        <p>My work experience and skills</p>
-    </header>
-    
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="professional.html">Professional</a>
-        <a href="hobbies.html">Hobbies</a>
+  <header class="navbar">
+    <div class="logo">Rizwan Khan</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="background.html">Background</a>
+      <a href="hobbies.html">Hobbies</a>
+      <a href="education.html">Education</a>
     </nav>
+  </header>
+
+  <main class="container">
+    <h1>Professional Journey</h1>
+    <p style="margin-top: 1rem; max-width: 700px;">
+      From a young age, I’ve always been intrigued by how things work — especially when it comes to technology and data. This fascination led me to pursue a career path in **Artificial Intelligence** and **Data Engineering**. Every step I take is fueled by the desire to solve real-world problems and make a meaningful impact in the field of data.
+    </p>
     
-    <div class="container">
-        <section id="experience">
-            <h2>Work Experience</h2>
-            <div class="job">
-                <h3>[Job Title] - [Company]</h3>
-                <p class="dates">[Start Date] - [End Date/Present]</p>
-                <p>Description of your responsibilities and achievements...</p>
-            </div>
-            <!-- Add more job entries as needed -->
-        </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <h3>Programming Languages</h3>
-            <div class="skill-bar">
-                <div class="skill" style="width:80%">HTML & CSS - 80%</div>
-            </div>
-            <div class="skill-bar">
-                <div class="skill" style="width:65%">JavaScript - 65%</div>
-            </div>
-            <!-- Add more skills as needed -->
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>[Project Name]</h3>
-                <p>Description of the project, your role, and outcomes...</p>
-            </div>
-            <!-- Add more projects as needed -->
-        </section>
+    <div class="professional">
+      <h2>🚀 Current Focus</h2>
+      <p>
+        Right now, I’m diving deep into **AI/ML** and **Data Engineering**, gaining hands-on experience through personal projects and my university studies. I’m working on building ETL pipelines, diving into big data tools, and preparing myself to tackle the real challenges in the industry.
+      </p>
+    </div>
+
+    <div class="professional">
+      <h2>🔍 Internships & Work Experience</h2>
+      <p>
+        While I haven’t yet landed my first professional internship, I’m actively pursuing opportunities where I can apply my skills in real-world scenarios. I plan to start as a **Data Engineer**, where I’ll leverage my passion for data, problem-solving, and system design.
+      </p>
+    </div>
+
+    <div class="professional">
+      <h2>📚 Academic Achievements</h2>
+      <p>
+        I am currently pursuing a Bachelor's in **Artificial Intelligence**, where I’m honing my knowledge in machine learning, data structures, and algorithms. I have a 3.74 GPA and am continuously working towards a **3.8** or higher, aiming to not only excel academically but also build a solid foundation for my future career.
+      </p>
     </div>
     
-    <footer>
-        <p>&copy; 2025 Rizwan's Personal Website</p>
-    </footer>
+    <div class="professional">
+      <h2>🌍 Future Aspirations</h2>
+      <p>
+        My long-term goal is to become an **ML Engineer** with a specialization in **Data Engineering**. I’m focusing on acquiring industry experience, and I have plans to pursue a **Master’s in AI** to deepen my expertise. I also hope to contribute to open-source projects and keep learning to stay at the forefront of this fast-evolving field.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Made with ❤️ & caffeine by Rizwan Khan</p>
+  </footer>
 </body>
 </html>
