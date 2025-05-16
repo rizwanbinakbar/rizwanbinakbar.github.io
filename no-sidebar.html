@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Professional Experience - Rizwan Bin Akbar</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            /* Skills Section Styles */
+            #skills {
+                margin: 2em 0;
+                padding: 2em 0;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            #skills h4 {
+                color: var(--accent-color);
+                margin-bottom: 1em;
+            }
+
+            #skills ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #skills li {
+                margin: 0.5em 0;
+                padding-left: 1.5em;
+                position: relative;
+            }
+
+            #skills li:before {
+                content: "→";
+                position: absolute;
+                left: 0;
+                color: var(--accent-color);
+            }
+
+            /* Project Cards Styles */
+            .project-card {
+                margin: 2em 0;
+                padding: 2em;
+                background: rgba(0,0,0,0.03);
+                border-radius: 8px;
+                transition: transform 0.2s ease;
+            }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .project-card h4 {
+                color: var(--accent-color);
+                margin-bottom: 1em;
+            }
+
+            .tools {
+                margin-top: 1em;
+            }
+
+            .tool-tag {
+                display: inline-block;
+                padding: 0.3em 0.8em;
+                margin: 0.2em;
+                background: var(--accent-color);
+                color: white;
+                border-radius: 15px;
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+    <body class="no-sidebar is-preload">
+        <div id="page-wrapper">
+            <!-- Header Wrapper -->
+            <div id="header-wrapper">
+                <div class="container">
+                    <!-- Header -->
+                    <header id="header">
+                        <div class="inner">
+                            <!-- Logo -->
+                            <h1><a href="index.html" id="logo">Professional</a></h1>
+                            <!-- Nav -->
+                            <nav id="nav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="education.html">Education</a></li>
+                                    <li class="current_page_item"><a href="professional.html">Professional</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </header>
+                </div>
+            </div>
+
+            <!-- Main Wrapper -->
+            <div id="main-wrapper">
+                <div class="wrapper style2">
+                    <div class="inner">
+                        <div class="container">
+                            <div id="content">
+                                <!-- Content -->
+                                <article>
+                                    <header class="major">
+                                        <h2>Professional Experience</h2>
+                                        <p>My journey in technology and development</p>
+                                    </header>
+
+                                    <!-- Skills Section -->
+                                    <section id="skills">
+                                        <h3>Skills</h3>
+                                        <div class="row">
+                                            <div class="col-4 col-12-medium">
+                                                <h4>Programming Languages</h4>
+                                                <ul>
+                                                    <li>Python</li>
+                                                    <li>SQL</li>
+													<li>C++</li>
+                                                    <li>Java</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-4 col-12-medium">
+                                                <h4>Frameworks & Tools</h4>
+                                                <ul>
+                                                    <li>Tensorflow</li>
+                                                    <li>Pytorch</li>
+                                                    <li>Git</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-4 col-12-medium">
+                                                <h4>Other Skills</h4>
+                                                <ul>
+                                                    <li>Project Management</li>
+                                                    <li>Team Leadership</li>
+                                                    <li>Problem Solving</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- Projects Section -->
+                                    <section id="projects">
+                                        <h3>Projects</h3>
+                                        
+                                        <div class="project-card">
+                                            <h4>3-Layer Data Warehouse Project</h4>
+                                            <p>Designed a data warehouse architecture using Bronze → Silver → Gold layers. Ingested data from CRM and ERP CSV sources, performed cleaning, transformation, and built analytics-ready data marts.</p>
+                                            <div class="tools">
+                                                <strong>Tools used:</strong>
+                                                <span class="tool-tag">SQL</span>
+                                                <span class="tool-tag">Data Analytics</span>
+                                                <span class="tool-tag">ETL</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="project-card">
+                                            <h4>Customer Churn Prediction using Decision Trees & Random Forests</h4>
+                                            <p>Built a classification model to predict churn using customer behaviour data from a telecom company.</p>
+                                            <div class="tools">
+                                                <strong>Tools used:</strong>
+                                                <span class="tool-tag">Python</span>
+                                                <span class="tool-tag">Tensorflow</span>
+                                                <span class="tool-tag">Pandas</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="project-card">
+                                            <h4>Spotify Dashboard (Power-BI)</h4>
+                                            <p>Built a responsive dashboard in PowerNI of Spotify 2023 data </p>
+                                            <div class="tools">
+                                                <strong>Tools used:</strong>
+                                                <span class="tool-tag">Python</span>
+                                                <span class="tool-tag">Power-BI</span>
+                                                <span class="tool-tag">API</span>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
