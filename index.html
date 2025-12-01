@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaliye naa 👉👈</title>
+    <!-- Importing a cute, rounded font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style> 
+        :root {
+            --pastel-pink: #ffe5ec;
+            --pastel-purple: #e0c3fc;
+            --strong-pink: #ff6b6b;
+            --text-color: #5d5d5d;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+
+        /* Floating background elements for extra playfulness */
+        .bg-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            z-index: -1;
+            animation: floatBackground 6s ease-in-out infinite;
+        }
+        
+        @keyframes floatBackground {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 90%;
+            width: 500px;
+            transition: transform 0.3s ease;
+            margin: 20px;
+            position: relative;
+        }
+
+        h1 {
+            color: var(--strong-pink);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0px #fff;
+            line-height: 1.2;
+        }
+
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .photo-frame {
+            width: 140px;
+            height: 140px;
+            border: 6px solid white;
+            border-radius: 50%; /* Circular photos */
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+            background-color: #fff;
+        }
+
+        .photo-frame:nth-child(2) {
+            transform: rotate(5deg);
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .question {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap; /* Allows wrapping on very small screens */
+            min-height: 60px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Fredoka', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            -webkit-tap-highlight-color: transparent; /* Removes blue tap box on mobile */
+        }
+
+        .btn-yes {
+            background-color: var(--strong-pink);
+            color: white;
+            box-shadow: 0 5px 0 #d45050;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-yes:active {
+            transform: translateY(4px);
+            box-shadow: none;
+            animation: none;
+        }
+
+        .btn-no {
+            background-color: #a5a5a5;
+            color: white;
+            box-shadow: 0 5px 0 #7a7a7a;
+            position: relative;
+        }
+
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        /* Meme Display Area */
+        #meme-container {
+            margin-top: 25px;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        #meme-container.visible {
+            height: 220px;
+            opacity: 1;
+        }
+
+        #meme-image {
+            max-width: 100%;
+            max-height: 180px;
+            border-radius: 15px;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .floating-text {
+            position: absolute;
+            font-weight: bold;
+            color: var(--strong-pink);
+            font-size: 1.2rem;
+            pointer-events: none;
+            animation: floatUp 1.5s ease-out forwards;
+            z-index: 100;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-80px) scale(1.2) rotate(10deg); opacity: 0; }
+        }
+
+        /* Success Screen */
+        .success-message {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Footer Styles */
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(93, 93, 93, 0.6);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 400;
+            z-index: 1000;
+            padding: 5px;
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .faq-toggle {
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple));
+            border: none;
+            border-radius: 15px;
+            padding: 15px 20px;
+            width: 100%;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .faq-toggle:active {
+            transform: translateY(0);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0 0 15px 15px;
+            margin-top: -10px;
+            padding: 0 20px;
+        }
+
+        .faq-content.open {
+            max-height: 500px;
+            padding: 20px;
+            margin-top: 5px;
+        }
+
+        .faq-content p {
+            margin: 0;
+            line-height: 1.7;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1.5rem; width: 90%; margin: 10px; }
+            .photo-frame { width: 110px; height: 110px; border-width: 4px; }
+            .photo-gallery { gap: 10px; }
+            .question { font-size: 1.3rem; }
+            .btn { padding: 10px 25px; font-size: 1.1rem; }
+            #meme-image { max-height: 150px; }
+            .footer { font-size: 0.65rem; bottom: 5px; }
+            .faq-toggle { font-size: 1rem; padding: 12px 15px; }
+            .faq-content p { font-size: 0.9rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cute floating background elements -->
+    <div class="bg-element" style="top: 10%; left: 10%;">☁️</div>
+    <div class="bg-element" style="top: 20%; right: 15%;">💖</div>
+    <div class="bg-element" style="bottom: 15%; left: 15%;">✨</div>
+    <div class="bg-element" style="bottom: 10%; right: 10%;">🎂</div>
+
+    <div class="container" id="main-card">
+        <!-- 
+            ========================================
+            HEADER & PHOTOS SECTION
+            ========================================
+        -->
+        <h1>Hosting krogi cutee? </h1>
+        
+        <div class="photo-gallery">
+            <!-- PHOTO 1: Replace src with her photo URL -->
+            <div class="photo-frame">
+                <img src="642176cfd87a00274d11df9898787d90.jpg" alt="Her Photo 1">
+            </div>
+            <!-- PHOTO 2: Replace src with her photo URL -->
+            <div class="photo-frame">
+                <img src="8e63f2bf724c7f000401681bd655a5d4.jpg" alt="Her Photo 2">
+            </div>
+        </div>
+
+        <!-- 
+            ========================================
+            FAQ SECTION
+            ========================================
+        -->
+        <div class="faq-section">
+            <button class="faq-toggle" id="faqToggle">
+                <span>Why should I do it with you? 🤔</span>
+                <span class="faq-icon">🔽</span>
+            </button>
+            <div class="faq-content" id="faqContent">
+                <p>
+                    BEACUSE mey request kr raha hoon.<br><br>
+                    
+                    I mean yeah it won't be 'perfect', but, hey, that's the whole point isn't it?<br><br>
+                    So, mey han samjho? 😼
+                </p>
+            </div>
+        </div>
+
+        <!-- 
+            ========================================
+            QUESTION & INTERACTION SECTION
+            ========================================
+        -->
+        <div id="question-section">
+            <p class="question">👇🏼 click here 🥺</p>
+            
+            <div class="buttons">
+                <button class="btn btn-yes" id="yesBtn">Yes!  💖</button>
+                <button class="btn btn-no" id="noBtn">No</button>
+            </div>
+
+            <!-- MEME AREA: Shows up when "No" is clicked -->
+            <div id="meme-container">
+                <img id="meme-image" src="" alt="Sad Meme">
+                <p id="reaction-text" style="font-size: 1rem; margin-top: 10px; color: #888; font-weight: 600;"></p>
+            </div>
+        </div>
+
+        <!-- 
+            ========================================
+            SUCCESS / CELEBRATION SECTION
+            ========================================
+        -->
+        <div id="success-section" class="success-message">
+            <h1 style="font-size: 2.5rem; color: var(--strong-pink);">LESSGOOO!  🎉</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 20px;">Mujhe pata tha  ❤️</p>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDB2aDJrYm03MWMxdDdsZTV6bWlkajAzMW1iaWRpeXlxODdoZG5kMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/W1hd3uXRIbddu/giphy.gif" alt="Happy Celebration" style="width: 200px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">Made with care by Riz</div>
+
+    <script>
+        /* ========================================
+           CONFIGURATION: EDIT LINKS HERE
+           ========================================
+        */
+        
+        // FAQ Toggle Functionality
+        const faqToggle = document.getElementById('faqToggle');
+        const faqContent = document.getElementById('faqContent');
+
+        faqToggle.addEventListener('click', () => {
+            faqToggle.classList.toggle('active');
+            faqContent.classList.toggle('open');
+        });
+
+        // List of Cute Cat Memes to cycle through when "No" is clicked
+        const memes = [
+            "Punch Cat.png", // Angry cat
+            "Angry Cat.png", // Crying cat
+            "Please Cat.png", // Puss in boots eyes
+            "Crying Cat.png", // Sad kitten
+            "small r small r1.jpg", // riz and raf
+            "Please Cat.png" // Grumpy cat
+        ];
+
+        // Cute/Funny texts to show when "No" is clicked
+        const pleadingTexts = [
+            "Chup chaap YES per click kr 👊🏼",
+            "Samajh nai ayi meri baat?? 😡",
+            "Pleaseeeeeeeeee",
+            "chalo mat kro ",
+            "This is us btw",
+            "Pakki baat hai??? 😭😭"
+        ];
+
+        /* ======================================== */
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const memeContainer = document.getElementById('meme-container');
+        const memeImage = document.getElementById('meme-image');
+        const reactionText = document.getElementById('reaction-text');
+        const questionSection = document.getElementById('question-section');
+        const successSection = document.getElementById('success-section');
+
+        let noClickCount = 0;
+        let currentScale = 1;
+
+        // "No" Button Interaction
+        noBtn.addEventListener('click', () => {
+            noClickCount++;
+
+            // 1. Add shake animation
+            noBtn.classList.add('shake');
+            setTimeout(() => {
+                noBtn.classList.remove('shake');
+            }, 400);
+
+            // 2.  Shrink the No button
+            currentScale -= 0.1;
+            if (currentScale < 0) currentScale = 0; 
+            noBtn.style.transform = `scale(${currentScale})`;
+
+            // 3. Show Meme Container if hidden
+            if (! memeContainer.classList.contains('visible')) {
+                memeContainer.classList.add('visible');
+            }
+
+            // 4.  Cycle Memes (Looping)
+            const memeIndex = (noClickCount - 1) % memes.length;
+            memeImage.src = memes[memeIndex];
+
+            // 5.  Cycle Pleading Text (Sequential)
+            // Replaced Math.random() with modulo arithmetic to keep order
+            const textIndex = (noClickCount - 1) % pleadingTexts.length;
+            reactionText.innerText = pleadingTexts[textIndex];
+
+            // 6. Floating Text Effect
+            createFloatingText(pleadingTexts[textIndex]);
+        });
+
+        // "Yes" Button Interaction
+        yesBtn.addEventListener('click', () => {
+            // 1. Launch Confetti
+            triggerConfetti();
+
+            // 2.  Switch UI
+            questionSection.classList.add('hidden');
+            successSection.style.display = 'flex';
+        });
+
+        // Function to create floating text near the mouse/button
+        function createFloatingText(text) {
+            const el = document.createElement('div');
+            el.innerText = text;
+            el.className = 'floating-text';
+            
+            // Randomize position slightly near the No button
+            const rect = noBtn.getBoundingClientRect();
+            // Account for scroll
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            const randomX = Math.random() * 100 - 50;
+            const randomY = Math.random() * 50 - 25;
+            
+            el.style.left = (rect.left + scrollLeft + rect.width/2 + randomX) + 'px';
+            el.style.top = (rect.top + scrollTop + randomY) + 'px';
+            
+            document.body.appendChild(el);
+
+            // Cleanup after animation
+            setTimeout(() => el.remove(), 1500);
+        }
+
+        // Confetti Function
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999 };
+
+            var random = function(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                // since particles fall down, start a bit higher than random
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
